@@ -52,8 +52,12 @@ function setupEventListeners(replayOthello, othelloBoard, cells) {
     document.getElementById("putCheckbox").addEventListener('change', function() {
         canPutState = this.checked;
         updateEventListeners(canPutState, replayOthello, othelloBoard, cells);
+        document.getElementById("newbutton").disabled = canPutState;
+        document.getElementById("endbutton").disabled = canPutState;
     });
     canPutState = document.getElementById("putCheckbox").checked
+    document.getElementById("newbutton").disabled = canPutState;
+    document.getElementById("endbutton").disabled = canPutState;
     updateEventListeners(canPutState, replayOthello, othelloBoard, cells);
 }
 
@@ -157,6 +161,7 @@ function displayBoard(board) {
     });
     document.getElementById("blackdisc").textContent = String(board.bitCount(board.playerBoard));
     document.getElementById("whitedisc").textContent = String(board.bitCount(board.opponentBoard));
+    document.getElementById("solvebutton").disabled = (board.blankcount() > 12)
 }
 
 function solve(board) {
