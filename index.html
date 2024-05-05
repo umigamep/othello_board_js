@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ReplayOthello</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/index.js" ></script> 
+</head>
+<body>
+
+<table id="myBoard" class="board">
+    <!-- 0 -->
+    <tr>
+        <th> </th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>E</th>
+        <th>F</th>
+        <th>G</th>
+        <th>H</th>
+    </tr>
+    <!-- 1 -->
+    <tr>
+        <th>1</th>
+        <td id="A1" name="coordinate"></td>
+        <td id="B1" name="coordinate"></td>
+        <td id="C1" name="coordinate"></td>
+        <td id="D1" name="coordinate"></td>
+        <td id="E1" name="coordinate"></td>
+        <td id="F1" name="coordinate"></td>
+        <td id="G1" name="coordinate"></td>
+        <td id="H1" name="coordinate"></td>
+    </tr>
+    <!-- 2 -->
+    <tr>
+        <th>2</th>
+        <td id="A2" name="coordinate"></td>
+        <td id="B2" name="coordinate"></td>
+        <td id="C2" name="coordinate"></td>
+        <td id="D2" name="coordinate"></td>
+        <td id="E2" name="coordinate"></td>
+        <td id="F2" name="coordinate"></td>
+        <td id="G2" name="coordinate"></td>
+        <td id="H2" name="coordinate"></td>
+    </tr>
+    <!-- 3 -->
+    <tr>
+        <th>3</th>
+        <td id="A3" name="coordinate"></td>
+        <td id="B3" name="coordinate"></td>
+        <td id="C3" name="coordinate"></td>
+        <td id="D3" name="coordinate"></td>
+        <td id="E3" name="coordinate"></td>
+        <td id="F3" name="coordinate"></td>
+        <td id="G3" name="coordinate"></td>
+        <td id="H3" name="coordinate"></td>
+    </tr>
+    <!-- 4 -->
+    <tr>
+        <th>4</th>
+        <td id="A4" name="coordinate"></td>
+        <td id="B4" name="coordinate"></td>
+        <td id="C4" name="coordinate"></td>
+        <td id="D4" name="coordinate"></td>
+        <td id="E4" name="coordinate"></td>
+        <td id="F4" name="coordinate"></td>
+        <td id="G4" name="coordinate"></td>
+        <td id="H4" name="coordinate"></td>
+    </tr>
+    <!-- 5 -->
+    <tr>
+        <th>5</th>
+        <td id="A5" name="coordinate"></td>
+        <td id="B5" name="coordinate"></td>
+        <td id="C5" name="coordinate"></td>
+        <td id="D5" name="coordinate"></td>
+        <td id="E5" name="coordinate"></td>
+        <td id="F5" name="coordinate"></td>
+        <td id="G5" name="coordinate"></td>
+        <td id="H5" name="coordinate"></td>
+    </tr>
+    <!-- 6 -->
+    <tr>
+        <th>6</th>
+        <td id="A6" name="coordinate"></td>
+        <td id="B6" name="coordinate"></td>
+        <td id="C6" name="coordinate"></td>
+        <td id="D6" name="coordinate"></td>
+        <td id="E6" name="coordinate"></td>
+        <td id="F6" name="coordinate"></td>
+        <td id="G6" name="coordinate"></td>
+        <td id="H6" name="coordinate"></td>
+    </tr>
+    <!-- 7 -->
+    <tr>
+        <th>7</th>
+        <td id="A7" name="coordinate"></td>
+        <td id="B7" name="coordinate"></td>
+        <td id="C7" name="coordinate"></td>
+        <td id="D7" name="coordinate"></td>
+        <td id="E7" name="coordinate"></td>
+        <td id="F7" name="coordinate"></td>
+        <td id="G7" name="coordinate"></td>
+        <td id="H7" name="coordinate"></td>
+    </tr>
+    <!-- 8 -->
+    <tr>
+        <th>8</th>
+        <td id="A8" name="coordinate"></td>
+        <td id="B8" name="coordinate"></td>
+        <td id="C8" name="coordinate"></td>
+        <td id="D8" name="coordinate"></td>
+        <td id="E8" name="coordinate"></td>
+        <td id="F8" name="coordinate"></td>
+        <td id="G8" name="coordinate"></td>
+        <td id="H8" name="coordinate"></td>
+    </tr>
+</table>
+<table class="score" >
+    <tr>
+        <th id="blackscore"> <span id = "blackdisc"></span> </th>
+        <th  id="whitescore"> <span id = "whitedisc"></span> </th>
+        <th><input type="checkbox" id="putCheckbox" name="put" value="Put"> Put</th>
+        <th><input type="button" id="solvebutton" value="AI"></th>
+    </tr>
+    <tr>
+        <th><input type="button" id="newbutton" value="|<"></th>
+        <th><input type="button" id="undobutton" value="<<"></th>
+        <!-- <th><input type="button" id="diagbutton" value="diag"></th> -->
+        <th><input type="button" id="nextbutton" value=">>"></th>
+        <th><input type="button" id="endbutton" value=">|"></th>
+    </tr>
+</table>
+<br>
