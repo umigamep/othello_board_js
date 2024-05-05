@@ -7,25 +7,39 @@ export class ReplayOthello {
         this.putBoard = new OthelloBoard;
         this.transcript = transcript;
         this.nowIndex = this.transcript.length/2;
+        this.setBoardFlg = 0;
     }
     undo(){
-        this.replayBoard.undo();
-        this.nowIndex -= 1;
+        if (this.nowIndex>0) {
+            this.replayBoard.undo();
+            this.nowIndex -= 1;
+        }
+        
     }
     next(){
-        this.replayBoard.Put(this.replayBoard.coordinateToBit(this.transcript.slice(2*this.nowIndex,2*this.nowIndex+1),this.transcript.slice(2*this.nowIndex+1,2*this.nowIndex+2)));
-        this.nowIndex += 1;
+        if(this.replayBoard.Put(this.replayBoard.coordinateToBit(this.transcript.slice(2*this.nowIndex,2*this.nowIndex+1),this.transcript.slice(2*this.nowIndex+1,2*this.nowIndex+2)))){
+            this.nowIndex += 1;
+        }
     }
     goToStart(){
-        this.replayBoard.new();
-        this.nowIndex = 0;
+        if(this.transcript != ""){
+            this.replayBoard.new();
+            this.nowIndex = 0;
+        }
     }
     goToEnd(){
-        this.replayBoard.new();
-        this.replayBoard.playline(this.transcript);
-        this.nowIndex = this.transcript.length/2;
+        if(this.transcript !=""){
+            this.replayBoard.new();
+            this.replayBoard.playline(this.transcript);
+            this.nowIndex = this.transcript.length/2;
+        }
+        
     }
     getReplayBoard(){
         return this.replayBoard;
+    }
+    setBoard(playerBoard, opponentBoard, isBlackTurn){
+        this.setBoardFlg = 1;
+        this.replayBoard.setBoard(playerBoard, opponentBoard, isBlackTurn);
     }
 }

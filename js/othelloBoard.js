@@ -42,6 +42,27 @@ export class OthelloBoard {
         this.historyOfplayerBoard[this.nowIndex] = this.playerBoard;
         this.historyOfopponentBoard[this.nowIndex] = this.opponentBoard;
     }
+
+    setBoard(playerBoard, opponentBoard, isBlackTurn) {
+        if(isBlackTurn){
+            this.nowTurn = this.BLACK_TURN;
+        } else {
+            this.nowTurn = this.WHITE_TURN;
+        }
+        this.playerBoard = playerBoard;
+        this.opponentBoard = opponentBoard;
+        this.nowIndex = 60-this.blankcount()
+
+        //履歴を保持
+        this.historyOfnowTurn = {};
+        this.historyOfplayerBoard = {};
+        this.historyOfopponentBoard = {};
+        this.historyOfPut = {};
+        this.historyOfnowTurn[this.nowIndex] = this.nowTurn;
+        this.historyOfplayerBoard[this.nowIndex] = this.playerBoard;
+        this.historyOfopponentBoard[this.nowIndex] = this.opponentBoard;
+        
+    }
     //座標をBitに変換
     coordinateToBit(x, y) {
         let mask= 0x8000000000000000n;
@@ -343,10 +364,10 @@ export class OthelloBoard {
             this.reverse(put);//この時点で手番が足されている。
             this.swapBoard();
             for(let i=this.nowIndex; i<61; ++i){ //この着手以降の着手履歴は消去
-                this.historyOfPut[this.nowIndex] = null;
-                this.historyOfnowTurn[this.nowIndex] = null;
-                this.historyOfplayerBoard[this.nowIndex] = null;
-                this.historyOfopponentBoard[this.nowIndex] = null;
+                this.historyOfPut[i] = null;
+                this.historyOfnowTurn[i] = null;
+                this.historyOfplayerBoard[i] = null;
+                this.historyOfopponentBoard[i] = null;
             }
             this.historyOfPut[this.nowIndex] = put;
             
@@ -461,6 +482,12 @@ export class OthelloBoard {
                     maxvalue = Math.max(maxvalue,this.alphasearch(maxvalue,legalmoves[i][2]));
                 }
                 this.undo();
+            }
+            for(let i=this.nowIndex+1; i<61; ++i){ //この着手以降の着手履歴は消去
+                this.historyOfPut[i] = null;
+                this.historyOfnowTurn[i] = null;
+                this.historyOfplayerBoard[i] = null;
+                this.historyOfopponentBoard[i] = null;
             }
             return maxvalue;
         } else {
