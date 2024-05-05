@@ -51,7 +51,7 @@ export class OthelloBoard {
         }
         this.playerBoard = playerBoard;
         this.opponentBoard = opponentBoard;
-        this.nowIndex = 60-this.blankcount()
+        this.nowIndex = 0
 
         //履歴を保持
         this.historyOfnowTurn = {};
