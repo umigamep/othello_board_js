@@ -447,9 +447,9 @@ export class OthelloBoard {
         //ゲーム終了なら、黒の石数を返す。
         if(this.isGameFinished){
             if(this.nowTurn==this.BLACK_TURN){
-                return this.bitCount(this.playerBoard);
+                return this.bitCount(this.playerBoard)-this.bitCount(this.opponentBoard);
             } else {
-                return this.bitCount(this.opponentBoard);
+                return this.bitCount(this.opponentBoard)-this.bitCount(this.playerBoard);
             }
         }
         let legal = this.makeLegalBoard();
@@ -523,9 +523,9 @@ export class OthelloBoard {
     alphasearch(maxvalue,legal){
         if(this.isGameFinished){
             if(this.nowTurn==this.BLACK_TURN){
-                return this.bitCount(this.playerBoard);
+                return this.bitCount(this.playerBoard)-this.bitCount(this.opponentBoard);
             } else {
-                return this.bitCount(this.opponentBoard);
+                return this.bitCount(this.opponentBoard)-this.bitCount(this.playerBoard);
             }
         }
         let mask= 0x8000000000000000n;
@@ -564,9 +564,9 @@ export class OthelloBoard {
     betasearch(minvalue,legal){
         if(this.isGameFinished){
             if(this.nowTurn==this.BLACK_TURN){
-                return this.bitCount(this.playerBoard);
+                return this.bitCount(this.playerBoard)-this.bitCount(this.opponentBoard);
             } else {
-                return this.bitCount(this.opponentBoard);
+                return this.bitCount(this.opponentBoard)-this.bitCount(this.playerBoard);
             }
         }
         let mask= 0x8000000000000000n;

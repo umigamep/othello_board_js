@@ -170,7 +170,7 @@ function solve(board) {
         for (let key in dict) {
             const cell = document.getElementById(key);
             cell.className = "evalmode";
-            cell.textContent = (2 * dict[key] - 64) * board.nowTurn / board.BLACK_TURN;
+            cell.textContent = dict[key] * board.nowTurn / board.BLACK_TURN;
         }
     } else {
         alert("完全読みは49手目以降で利用可能です.");
