@@ -39,7 +39,8 @@ function initializeReplayOthello(transcript, startBoard, startColor, othelloBoar
         document.getElementById("putCheckbox").checked=true;
         const { xBits, oBits } = parseBoardState(startBoard);
         replayOthello = new ReplayOthello("")
-        replayOthello.setBoard(startColor === "white" ? oBits : xBits, startColor === "white" ? xBits : oBits, startColor === "white" ? 0 : 1);
+        replayOthello.setBoard(startColor === "white"  ? oBits:xBits,  startColor === "white"  ? xBits : oBits, startColor === "white" ? 0 : 1);
+        othelloBoard.setBoard(startColor === "white"  ? oBits:xBits,  startColor === "white"  ? xBits : oBits, startColor === "white" ? 0 : 1);
         return replayOthello
     } else {
         console.error("No transcript or start board provided in the URL.");
@@ -95,7 +96,7 @@ function updateEventListeners(canPutState, replayOthello, othelloBoard, cells) {
     if (canPutState) {
         othelloBoard.new();
         if (replayOthello.setBoardFlg) {
-            othelloBoard.setBoard(replayOthello.getReplayBoard().playerBoard, replayOthello.getReplayBoard().opponentBoard, replayOthello.getReplayBoard().nowTurn)
+            othelloBoard.setBoard(replayOthello.getReplayBoard().playerBoard, replayOthello.getReplayBoard().opponentBoard, replayOthello.getReplayBoard().nowTurn === replayOthello.getReplayBoard().BLACK_TURN)
         } else {
             othelloBoard.playline(replayOthello.getReplayBoard().Kifu());
         }
