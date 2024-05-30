@@ -616,4 +616,27 @@ export class OthelloBoard {
         return ret;
     }
 
+    playBest(){
+        if (this.blankcount() <= 12) {
+            let dict = this.eval();
+            let bestMove = null;
+            let bestValue = -Infinity;
+            
+            for (let key in dict) {
+                let value = dict[key] * this.nowTurn / this.BLACK_TURN;
+                if (value > bestValue) {
+                    bestValue = value;
+                    bestMove = key;
+                }
+            }
+    
+            if (bestMove !== null) {
+                let x = bestMove.charAt(0);
+                let y = bestMove.charAt(1);
+                let bitMove = this.coordinateToBit(x, y);
+                this.Put(bitMove);
+            }
+        } 
+    }
+
 }
